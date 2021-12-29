@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/main.js"></script>
+    <title>MASTERMIND</title>
+</head>
+
+<body>
+    <h1></h1>
+    <div id="bigBox">
+
+        <div id=scoreBoardBox>
+            <p>Scoreboard:</p>
+            <p>guesses</p>
+            <p>wins</p>
+            <p>Your Mission</p>
+            <p>color coded key</p>
+            <button id="submitButton">Submit Code!</button>
+        </div>
+
+        <div id="gameBoardBox">
+            <div id=titleBox>
+                <h3 id="gameTitle">MASTERMIND</h3>
+                <div id="comp">C</div>
+                <div id="comp">O</div>
+                <div id="comp">D</div>
+                <div id="comp">E</div>
+            </div>
+
+            <div id="codeRows">
+                <div class=codeRows id="row0">
+                    <div class="defcon">
+                        <div id="defcon">Defcon 1</div>
+                    </div>
+                    <div class="codeAttempts">
+                        <div id="r0c0"></div>
+                        <div id="r0c1"></div>
+                        <div id="r0c2"></div>
+                        <div id="r0c3"></div>
+                    </div>
+                    <div class="feedback">
+                        <div id="Fr0c0"></div>
+                        <div id="Fr0c1"></div>
+                        <div id="Fr0c2"></div>
+                        <div id="Fr0c3"></div>
+                    </div> 
+                </div>
+
+                <div class=codeRows id="row1">
+                    <div class="defcon">
+                        <div id="defcon">Defcon 2</div>
+                    </div>
+                    <div class="codeAttempts">
+                        <div id="r1c0"></div>
+                        <div id="r1c1"></div>
+                        <div id="r1c2"></div>
+                        <div id="r1c3"></div>
+                    </div>
+                    <div class="feedback">
+                        <div id="Fr1c0"></div>
+                        <div id="Fr1c1"></div>
+                        <div id="Fr1c2"></div>
+                        <div id="Fr1c3"></div>
+                    </div>
+                </div>
+
+                <div class=codeRows id="row2">
+                    <div class="defcon">
+                        <div id="defcon">Defcon 3</div>
+                    </div>
+                    <div class="codeAttempts">
+                        <div id="r2c0"></div>
+                        <div id="r2c1"></div>
+                        <div id="r2c2"></div>
+                        <div id="r2c3"></div>
+                    </div>
+                    <div class="feedback">
+                        <div id="Fr2c0"></div>
+                        <div id="Fr2c1"></div>
+                        <div id="Fr2c2"></div>
+                        <div id="Fr2c3"></div>
+                    </div>
+                </div>
+
+                <div class=codeRows id="row3">
+                    <div class="defcon">
+                        <div id="defcon">Defcon 4</div>
+                    </div>
+                    <div class="codeAttempts">
+                        <div id="r3c0"></div>
+                        <div id="r3c1"></div>
+                        <div id="r3c2"></div>
+                        <div id="r3c3"></div>
+                    </div>
+                    <div class="feedback">
+                        <div id="Fr3c0"></div>
+                        <div id="Fr3c1"></div>
+                        <div id="Fr3c2"></div>
+                        <div id="Fr3c3"></div>
+                    </div>
+                </div>
+
+                <div class=codeRows id="row4">
+                    <div class="defcon">
+                        <div id="defcon">Defcon 5</div>
+                    </div>
+                    <div class="codeAttempts">
+                        <div id="r4c0"></div>
+                        <div id="r4c1"></div>
+                        <div id="r4c2"></div>
+                        <div id="r4c3"></div>
+                    </div>
+                    <div class="feedback">
+                        <div id="Fr4c0"></div>
+                        <div id="Fr4c1"></div>
+                        <div id="Fr4c2"></div>
+                        <div id="Fr4c3"></div>
+                    </div>
+                </div>
+
+                <div class=codeRows id="row5">
+                    <div class="defcon">
+                        <div id="defcon">Defcon 6</div>
+                    </div>
+                    <div class="codeAttempts">
+                        <div id="r5c0"></div>
+                        <div id="r5c1"></div>
+                        <div id="r5c2"></div>
+                        <div id="r5c3"></div>
+                    </div>
+                    <div class="feedback">
+                        <div id="Fr5c0"></div>
+                        <div id="Fr5c1"></div>
+                        <div id="Fr5c2"></div>
+                        <div id="Fr5c3"></div>
+                    </div>
+                </div>
+
+                <div class=codeRows id="row6">
+                    <div class="defcon">
+                        <div id="defcon">Defcon 7</div>
+                    </div>
+                    <div class="codeAttempts">
+                        <div id="r6c0"></div>
+                        <div id="r6c1"></div>
+                        <div id="r6c2"></div>
+                        <div id="r6c3"></div>
+                    </div>
+                    <div class="feedback">
+                        <div id="Fr6c0"></div>
+                        <div id="Fr6c1"></div>
+                        <div id="Fr6c2"></div>
+                        <div id="Fr6c3"></div>
+                    </div>
+                </div>
+
+                <div class=codeRows id="row7">
+                    <div class="defcon">
+                        <div id="defcon">Defcon 8</div>
+                    </div>
+                    <div class="codeAttempts">
+                        <div id="r7c0"></div>
+                        <div id="r7c1"></div>
+                        <div id="r7c2"></div>
+                        <div id="r7c3"></div>
+                    </div>
+                    <div class="feedback">
+                        <div id="Fr7c0"></div>
+                        <div id="Fr7c1"></div>
+                        <div id="Fr7c2"></div>
+                        <div id="Fr7c3"></div>
+                    </div>
+                </div>
+
+                <div class=codeRows id="row8">
+                    <div class="defcon">
+                        <div id="defcon">Defcon 9</div>
+                    </div>
+                    <div class="codeAttempts">
+                        <div id="r8c0"></div>
+                        <div id="r8c1"></div>
+                        <div id="r8c2"></div>
+                        <div id="r8c3"></div>
+                    </div>
+                    <div class="feedback">
+                        <div id="Fr8c0"></div>
+                        <div id="Fr8c1"></div>
+                        <div id="Fr8c2"></div>
+                        <div id="Fr8c3"></div>
+                    </div>
+                </div>
+
+                <div class=codeRows id="row9">
+                    <div class="defcon">
+                        <div id="defcon">Defcon 10</div>
+                    </div>
+                    <div class="codeAttempts">
+                        <div id="r9c0"></div>
+                        <div id="r9c1"></div>
+                        <div id="r9c2"></div>
+                        <div id="r9c3"></div>
+                    </div>
+                    <div class="feedback">
+                        <div id="Fr9c0"></div>
+                        <div id="Fr9c1"></div>
+                        <div id="Fr9c2"></div>
+                        <div id="Fr9c3"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="colorChoices" id="colorChoices">
+                <div id="a"></div>
+                <div id="b"></div>
+                <div id="c"></div>
+                <div id="d"></div>
+                <div id="e"></div>
+                <div id="f"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
