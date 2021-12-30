@@ -124,10 +124,10 @@ body {
     margin: 5px;
 }
 
-#a {background-color: red;}
-#b {background-color: blue;}
-#c {background-color: green;}
-#d {background-color: yellow;}
-#e {background-color: orange;}
-#f {background-color: purple;}
+#col1 {background-color: red;}
+#col2 {background-color: blue;}
+#col3 {background-color: green;}
+#col4 {background-color: yellow;}
+#col5 {background-color: orange;}
+#col6 {background-color: purple;}
 

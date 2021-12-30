@@ -1,12 +1,14 @@
 /*----- constants -----*/
 let COLORS = {
-      0: "none",
-    "a": "red",
-    "b": "blue",
-    "c": "green",
-    "d": "yellow",
-    "e": "orange",
-    "f": "purple"
+    0: "none",
+    1: "red",
+    2: "blue",
+    3: "green",
+    4: "yellow",
+    5: "orange",
+    6: "purple",
+    Feed1: "black",
+    Feed2: "grey"
 }
 
 
@@ -16,9 +18,10 @@ let gameTurn;
 let colorArray;
 let colorID;
 let codeColId;
-// let buttonID;
 let currentCodeTarget;
 let compCodeArray;
+let feedbackArray;
+let testArray;
 
 
 /*----- cached element references -----*/
@@ -34,11 +37,11 @@ codeRows.addEventListener("click", function(evt){
 });
 
 submitButton.addEventListener("click", function(evt){
-    submitColor();
+    submitColorCheck();
 })
 
 colorChoices.addEventListener("click", function(evt){
-    colorID = evt.target.id;
+    colorID = evt.target.id[3];
 })
 
 
@@ -50,15 +53,17 @@ init();
 function init(){
     gameTurn = 9;
     colorArray = [0, 0, 0, 0];
-    compCodeArray = [0, 0, 0, 0];
+    feedbackArray = [];
     generaterCompCode();
+    console.log(compCodeArray)
     renderPlayerBoard();
 }
 
 function generaterCompCode() {
-
-    let randomNumber = compCodeArray.map(Math.floor(Math.random() * 3);
-
+        compCodeArray = colorArray.map(function(ele){
+        ele += (Math.floor(Math.random() * 6) + 1);
+        return ele;
+    });
 }
 
 function renderPlayerBoard() {
@@ -75,18 +80,27 @@ function addColorToArray(buttonID){
     renderPlayerBoard();
 }
 
-function submitColor(){
-    //check against computer
-    // generate results for feedback
+function submitColorCheck(){
+    if (colorArray.includes(0)) return;
+    for (let i = 0; i < colorArray.length; i++){
+
+            if (colorArray[i] == compCodeArray[i]) {
+                console.log("hello3");
+                colorArray.splice(i, 1, 7);
+                feedbackArray.push("Feed1");
+            }
+    }
     renderFeedback()
+}
+
+function renderFeedback() {
+
+    setForNextRow();
 }
 
 function setForNextRow(){
     gameTurn = gameTurn - 1;
     colorArray = [0, 0, 0, 0];
+    feedbackArray = [];
 }
 
-function renderFeedback(){
-
-    setForNextRow();
-}
