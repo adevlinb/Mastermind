@@ -115,7 +115,7 @@ function submitColorCheck(){
         }
     });
 
-    // check for inexact position / number
+    // check for inexact position, but correct color (counts one per color)
     for (let x = 0; x < colorElimDupes.length; x++) {
         if (colorElimDupes.includes(compElimDupes[x])) {
             feedbackArray.push("Feed2");
@@ -123,6 +123,7 @@ function submitColorCheck(){
     };
 
     renderFeedback();
+    checkWin();
 }
 
 function renderFeedback() {
@@ -132,7 +133,7 @@ function renderFeedback() {
     feedbackLocale.style.backgroundColor = `${COLORS[feedback]}`;
     })
 
-    setForNextRow();
+setForNextRow();
 }
 
 function setForNextRow(){
@@ -141,3 +142,14 @@ function setForNextRow(){
     compCopyCode = compCodeArray.map(ele => ele);
     feedbackArray = [];
 }
+
+function checkWin(){
+    let count = 0
+    feedbackArray.forEach(function(feedback){
+        if (feedback === "Feed1") count++
+    })
+
+    if (count === 4) renderWin();
+}
+
+function renderWin ()
