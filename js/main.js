@@ -24,13 +24,14 @@ let compCodeArray;
 let compCopyCode;
 let feedbackArray;
 let testArray;
-
+let winner;
+let countdownOutline;
 
 /*----- cached element references -----*/
 let codeRows = document.getElementById("codeRows");
 let submitButton = document.getElementById("submitButton");
 let colorChoices = document.getElementById("colorChoices");
-
+let compCodeReveal = document.getElementById("compCode");
 
 /*----- event listeners -----*/
 codeRows.addEventListener("click", function(evt){
@@ -40,15 +41,15 @@ codeRows.addEventListener("click", function(evt){
 });
 
 submitButton.addEventListener("click", function(evt){
+    console.log("submit click");
     submitColorCheck();
-})
+});
 
 colorChoices.addEventListener("click", function(evt){
+    console.log("color click");
     colorID = evt.target.id[3];
     if (colorID === "" || colorID === NaN || colorID === undefined) return;
-})
-
-
+});
 
 /*----- functions -----*/
 
@@ -61,9 +62,10 @@ function init(){
     colorArrayReset = [0, 0, 0, 0];
     compReset = [0, 0, 0, 0];
     feedbackArray = [];
+    winner = null;
     generateCompCode();
     compCopyCode = compCodeArray.map(ele => ele);
-    renderPlayerBoard();
+    render();
 }
 
 function generateCompCode() {
@@ -73,19 +75,38 @@ function generateCompCode() {
     });
 }
 
+
+function render () {
+    countdownOutline = document.getElementById(`defcon${gameTurn}`);
+    countdownOutline.style.outline = "1px dashed rgba(255, 0, 0, 0.9)"
+    compCodeReveal.style.visibility = winner ? "visible" : "hidden";
+    renderPlayerBoard();
+    renderFeedback();
+    renderCompCode();
+}
+
+
 function renderPlayerBoard() {
     colorArray.forEach(function(color, Idx) {
         let codeLocale = document.getElementById(`r${gameTurn}c${Idx}`);
         codeLocale.style.backgroundColor = `${COLORS[color]}`;
+    }); 
+};
+
+function renderCompCode() {
+    compCodeArray.forEach(function(color, idx){
+        let compCodeLocale = document.getElementById(`comp${idx}`);
+        compCodeLocale.style.backgroundColor = `${COLORS[color]}`;
     });
-}
+};
 
 
 function addColorToArray(buttonID){
     codeColId = parseInt(buttonID[3]);
     colorArray[codeColId] = parseInt(colorID);
-    renderPlayerBoard();
-}
+    render();
+};
+
 
 function submitColorCheck(){
     if (colorArray.includes(0)) return;
@@ -107,7 +128,7 @@ function submitColorCheck(){
         }
     });
     
-    // eliminate duplicate codes
+    // eliminate duplicate comp codes
     let compElimDupes = [];
     compCopyCode.forEach(function(code){
         if (!compElimDupes.includes(code)){
@@ -122,34 +143,40 @@ function submitColorCheck(){
         }
     };
 
-    renderFeedback();
-    checkWin();
-}
+    winner = checkWin();
+    render();
+    winner ? gameEnd() : setForNextRow();
+};
 
 function renderFeedback() {
-
+    console.log(feedbackArray);
+    console.log(compCodeArray);
     feedbackArray.forEach(function(feedback, idx){
     let feedbackLocale = document.getElementById(`Fr${gameTurn}c${idx}`)
     feedbackLocale.style.backgroundColor = `${COLORS[feedback]}`;
     })
 
-setForNextRow();
 }
 
 function setForNextRow(){
+    countdownOutline.style.outline = "none"
     gameTurn = gameTurn - 1;
     colorArray = colorArrayReset.map(ele => ele);
     compCopyCode = compCodeArray.map(ele => ele);
     feedbackArray = [];
+    render();
 }
 
 function checkWin(){
-    let count = 0
+    let count = 0;
     feedbackArray.forEach(function(feedback){
-        if (feedback === "Feed1") count++
-    })
+        if (feedback === "Feed1") count++;
+    });
+    return count === 4 ? true : null;
+};
 
-    if (count === 4) renderWin();
-}
+function gameEnd () {
 
-function renderWin ()
+
+console.log("you won!");
+};
