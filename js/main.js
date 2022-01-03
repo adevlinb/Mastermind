@@ -1,6 +1,6 @@
 /*----- constants -----*/
 let COLORS = {
-    0: "none",
+    0: "white",
     1: "red",
     2: "blue",
     3: "green",
@@ -32,6 +32,7 @@ let codeRows = document.getElementById("codeRows");
 let submitButton = document.getElementById("submitButton");
 let colorChoices = document.getElementById("colorChoices");
 let compCodeReveal = document.getElementById("compCode");
+let resetGame = document.getElementById("resetButton");
 
 /*----- event listeners -----*/
 codeRows.addEventListener("click", function(evt){
@@ -51,6 +52,20 @@ colorChoices.addEventListener("click", function(evt){
     if (colorID === "" || colorID === NaN || colorID === undefined) return;
 });
 
+resetGame.addEventListener("click", function(){
+    buttonID = 0;
+    for (let j = 0; j < 9; j++) {
+        for (let m = 0; m < 4; m++) {
+        let codeLocale = document.getElementById(`r${j}c${m}`);
+        codeLocale.style.backgroundColor = `${COLORS[0]}`;
+        let feedbackLocale = document.getElementById(`Fr${j}c${m}`)
+        feedbackLocale.style.backgroundColor = `${COLORS[0]}`;
+        }
+    };
+
+    init();
+})
+
 /*----- functions -----*/
 
 init();
@@ -65,6 +80,9 @@ function init(){
     winner = null;
     generateCompCode();
     compCopyCode = compCodeArray.map(ele => ele);
+    console.log(compCopyCode);
+    console.log(feedbackArray);
+    console.log(colorArray);
     render();
 }
 

@@ -9,6 +9,17 @@ body {
     background-size: cover;
 }
 
+#left {
+    display: flex;
+    flex-direction: column;
+
+}
+
+p {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: table;
+}
+
 #bigBox {
     display: flex;
     flex-direction: row;
@@ -17,12 +28,13 @@ body {
 }
 
 #scoreBoardBox {
-    min-width: 200px;
+    min-width: 100px;
+    max-width: 400px;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 10px;
-    margin-right: 300px;
+    margin-right: 200px;
     color: white;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
 
 }
 
@@ -38,6 +50,7 @@ body {
     background-size: cover;
     transform: rotate(0.0025turn);
     box-shadow: 3px 5px rgba(46, 46, 46, 0.6);
+    height: fit-content;
     
 }
 
@@ -110,7 +123,7 @@ body {
 	width: 37px;
     border: 2px solid rgb(0, 0, 0);
     margin: 5px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: white;
     box-shadow: 2px 2px rgba(46, 46, 46, 0.6);
 }
 
@@ -213,7 +226,8 @@ body {
     flex-direction: row;
     max-height: 40px;
     align-items: center;
-    margin: 5px;
+    margin: 8px;
+    margin-bottom: 8px;
 }
 
 .colorChoices > div {
@@ -222,6 +236,7 @@ body {
 	width: 40px;
     border: 2px solid black;
     margin: 5px;
+    box-shadow: 3px 3px rgba(46, 46, 46, 0.7);
 }
 
 #col1 {background-color: red;}

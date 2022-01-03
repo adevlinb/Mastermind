@@ -15,16 +15,32 @@
 <body>
     <h1></h1>
     <div id="bigBox">
-
-        <div id=scoreBoardBox>
-            <p>SCOREBOARD</p>
-            <p>guesses</p>
-            <p>wins</p>
-            <p>Your Mission</p>
-            <p>color coded key</p>
-            <button id="submitButton">Submit Code!</button>
+        <div id="left">
+            <div id=scoreBoardBox>
+                <p>MASTERMIND!</p>
+                <p>INSTRUCTIONS:</p>
+                <p>Your goal is to break the 4 digit code that stands between you and saving the world from nuclear disaster!
+                
+                Click inside the empty circle to cycle through the 6 possible colors and leave a color in each circle. Once you have
+                chosen your four colors you may click the “crack the code” button to submit your guess. On the right hand side of the
+                board your nemesis will respond with filling the circles according to two distinctions. Grey if you got one of your
+                colors correct. (One peg per correct color even if the code contains the color twice). Black is returned if you got a
+                color correct and the position correct. From there, take your next educated guess and submit another guess. The game
+                will continue accordingly until you crack the code / save the world or face nuclear holocaust! Don’t let fate become a
+                reality!</p>
+                <p>Your Mission</p>
+                <p>color coded key</p>
+                <button id="submitButton">Submit Code!</button>
+            </div>
+            <div id=scoreBoardBox>
+                <p>SCOREBOARD</p>
+                <p>guesses</p>
+                <p>wins</p>
+                <p>Your Mission</p>
+                <p>color coded key</p>
+                <button id="resetButton">PLAY AGAIN!</button>
+            </div>
         </div>
-
         <div id="gameBoardBox">
             <div id=titleBox>
                 <p id="gameTitle">MASTERMIND</p>
