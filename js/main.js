@@ -78,7 +78,7 @@ function generateCompCode() {
 
 function render () {
     countdownOutline = document.getElementById(`defcon${gameTurn}`);
-    countdownOutline.style.outline = "1px dashed rgba(255, 0, 0, 0.9)"
+    countdownOutline.style.outline = "2.5px solid rgba(255, 0, 0, 0.9)"
     compCodeReveal.style.visibility = winner ? "visible" : "hidden";
     renderPlayerBoard();
     renderFeedback();
