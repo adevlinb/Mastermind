@@ -54,12 +54,17 @@ colorChoices.addEventListener("click", function(evt){
 
 resetGame.addEventListener("click", function(){
     buttonID = 0;
-    for (let j = 0; j < 9; j++) {
+    for (let j = 0; j < 10; j++) {
         for (let m = 0; m < 4; m++) {
+            //iterate through board to reset playerCodeColors to "white / empty"
         let codeLocale = document.getElementById(`r${j}c${m}`);
         codeLocale.style.backgroundColor = `${COLORS[0]}`;
+            //iterate through feedbackColorBoards to reset colors to "white / empty"
         let feedbackLocale = document.getElementById(`Fr${j}c${m}`)
         feedbackLocale.style.backgroundColor = `${COLORS[0]}`;
+            // iterate through left side color countdown (red circle following game play) back to start (10)
+        countdownOutline = document.getElementById(`defcon${j}`);
+        countdownOutline.style.outline = "none"
         }
     };
 
@@ -187,10 +192,12 @@ function setForNextRow(){
 
 function checkWin(){
     let count = 0;
+
     feedbackArray.forEach(function(feedback){
-        if (feedback === "Feed1") count++;
+       if (feedback === "Feed1") count++;
     });
     return count === 4 ? true : null;
+
 };
 
 function gameEnd () {
