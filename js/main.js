@@ -54,6 +54,7 @@ submitButton.addEventListener("click", function(evt){
 
 colorChoices.addEventListener("click", function(evt){
     colorID = evt.target.id[3];
+    console.log(colorID);
     if (colorID === "" || colorID === NaN || colorID === undefined) return;
 });
 
@@ -87,15 +88,17 @@ playAgain.addEventListener("click", function(){
 init();
 
 function init(){
-    gameTurn = 9;
+    gameTurn = 10;
     colorArray = [0, 0, 0, 0];
     colorArrayReset = [0, 0, 0, 0];
     compReset = [0, 0, 0, 0];
     feedbackArray = [];
     winner = null;
     generateCompCode();
-    compCopyCode = compCodeArray.map(ele => ele);
-    // console.log(compCopyCode);
+    //compCopyCode = compCodeArray.map(ele => ele); (original function)
+    compCopyCode = compCodeArray.slice(); //(recommended function)
+    // compCopyCode = [...compCodeArray]; // (another option)
+    // console.log(compCopyCode); (quick grab code to end game)
     render();
 }
 
@@ -112,7 +115,7 @@ function render () {
     countdownOutline.style.outline = "2.5px solid rgba(255, 0, 0, 0.9)"
     compCodeReveal.style.visibility = winner ? "visible" : "hidden";
     playAgain.style.visibility = winner ? "visible" : "hidden";
-    if (gameTurn === (-1)) gameEnd();
+    //if (gameTurn === 0) gameEnd();
     renderScores();
     renderPlayerBoard();
     renderFeedback();
@@ -122,7 +125,7 @@ function render () {
 
 function renderPlayerBoard() {
     colorArray.forEach(function(color, Idx) {
-        let codeLocale = document.getElementById(`r${gameTurn}c${Idx}`);
+        let codeLocale = document.getElementById(`c${Idx}r${gameTurn}`);
         codeLocale.style.backgroundColor = `${COLORS[color]}`;
     }); 
 };
@@ -136,7 +139,7 @@ function renderCompCode() {
 
 
 function addColorToArray(buttonID){
-    codeColId = parseInt(buttonID[3]);
+    codeColId = parseInt(buttonID[1]);
     colorArray[codeColId] = parseInt(colorID);
     render();
 };
