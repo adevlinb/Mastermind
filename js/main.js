@@ -45,7 +45,9 @@ let playLoses = document.getElementById("loses");
 codeRows.addEventListener("click", function(evt){
     let buttonID = evt.target.id
     if (colorID === "" || colorID === NaN || colorID === undefined) return;
-    addColorToArray(buttonID);
+    codeColId = parseInt(buttonID[1]);
+    colorArray[codeColId] = parseInt(colorID);
+    render();
 });
 
 submitButton.addEventListener("click", function(evt){
@@ -54,7 +56,6 @@ submitButton.addEventListener("click", function(evt){
 
 colorChoices.addEventListener("click", function(evt){
     colorID = evt.target.id[3];
-    console.log(colorID);
     if (colorID === "" || colorID === NaN || colorID === undefined) return;
 });
 
@@ -95,10 +96,7 @@ function init(){
     feedbackArray = [];
     winner = null;
     generateCompCode();
-    //compCopyCode = compCodeArray.map(ele => ele); (original function)
-    compCopyCode = compCodeArray.slice(); //(recommended function)
-    // compCopyCode = [...compCodeArray]; // (another option)
-    // console.log(compCopyCode); (quick grab code to end game)
+    compCopyCode = compCodeArray.slice();
     render();
 }
 
@@ -115,7 +113,6 @@ function render () {
     countdownOutline.style.outline = "2.5px solid rgba(255, 0, 0, 0.9)"
     compCodeReveal.style.visibility = winner ? "visible" : "hidden";
     playAgain.style.visibility = winner ? "visible" : "hidden";
-    //if (gameTurn === 0) gameEnd();
     renderScores();
     renderPlayerBoard();
     renderFeedback();
@@ -135,13 +132,6 @@ function renderCompCode() {
         let compCodeLocale = document.getElementById(`comp${idx}`);
         compCodeLocale.style.backgroundColor = `${COLORS[color]}`;
     });
-};
-
-
-function addColorToArray(buttonID){
-    codeColId = parseInt(buttonID[1]);
-    colorArray[codeColId] = parseInt(colorID);
-    render();
 };
 
 
@@ -197,8 +187,9 @@ function setForNextRow(){
     guesses = guesses + 1;
     countdownOutline.style.outline = "none"
     gameTurn = gameTurn - 1;
-    colorArray = colorArrayReset.map(ele => ele);
-    compCopyCode = compCodeArray.map(ele => ele);
+    gameTurn === 0 ? gameLose() : 
+    colorArray = colorArrayReset.slice();
+    compCopyCode = compCodeArray.slice();
     feedbackArray = [];
     render();
 }
@@ -226,7 +217,6 @@ function renderScores() {
 };
 
 function gameLose() {
-    // compCodeReveal.style.visibility = "visible";
-    console.log("you lose");
-    console.log(gameTurn);
+    compCodeReveal.style.visibility = "visible";
+    return;
 }
