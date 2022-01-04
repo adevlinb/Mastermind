@@ -26,13 +26,20 @@ let feedbackArray;
 let testArray;
 let winner;
 let countdownOutline;
+let currentScore = 0;
+let guesses = 0;
+let loses = 0;
 
 /*----- cached element references -----*/
 let codeRows = document.getElementById("codeRows");
-let submitButton = document.getElementById("submitButton");
+let submitButton = document.getElementById("submitCode");
 let colorChoices = document.getElementById("colorChoices");
 let compCodeReveal = document.getElementById("compCode");
-let resetGame = document.getElementById("resetButton");
+let playAgain = document.getElementById("playAgain");
+let resetScores = document.getElementById("resetScore");
+let playGuess = document.getElementById("guess");
+let playWin = document.getElementById("wins");
+let playLoses = document.getElementById("loses");
 
 /*----- event listeners -----*/
 codeRows.addEventListener("click", function(evt){
@@ -42,17 +49,22 @@ codeRows.addEventListener("click", function(evt){
 });
 
 submitButton.addEventListener("click", function(evt){
-    console.log("submit click");
     submitColorCheck();
 });
 
 colorChoices.addEventListener("click", function(evt){
-    console.log("color click");
     colorID = evt.target.id[3];
     if (colorID === "" || colorID === NaN || colorID === undefined) return;
 });
 
-resetGame.addEventListener("click", function(){
+resetScores.addEventListener("click", function() {
+    currentScore = 0;
+    guesses = 0;
+    loses = 0;
+    render();
+});
+
+playAgain.addEventListener("click", function(){
     buttonID = 0;
     for (let j = 0; j < 10; j++) {
         for (let m = 0; m < 4; m++) {
@@ -67,7 +79,6 @@ resetGame.addEventListener("click", function(){
         countdownOutline.style.outline = "none"
         }
     };
-
     init();
 })
 
@@ -76,7 +87,6 @@ resetGame.addEventListener("click", function(){
 init();
 
 function init(){
-    
     gameTurn = 9;
     colorArray = [0, 0, 0, 0];
     colorArrayReset = [0, 0, 0, 0];
@@ -85,9 +95,7 @@ function init(){
     winner = null;
     generateCompCode();
     compCopyCode = compCodeArray.map(ele => ele);
-    console.log(compCopyCode);
-    console.log(feedbackArray);
-    console.log(colorArray);
+    // console.log(compCopyCode);
     render();
 }
 
@@ -103,6 +111,9 @@ function render () {
     countdownOutline = document.getElementById(`defcon${gameTurn}`);
     countdownOutline.style.outline = "2.5px solid rgba(255, 0, 0, 0.9)"
     compCodeReveal.style.visibility = winner ? "visible" : "hidden";
+    playAgain.style.visibility = winner ? "visible" : "hidden";
+    if (gameTurn === (-1)) gameEnd();
+    renderScores();
     renderPlayerBoard();
     renderFeedback();
     renderCompCode();
@@ -168,12 +179,10 @@ function submitColorCheck(){
 
     winner = checkWin();
     render();
-    winner ? gameEnd() : setForNextRow();
+    winner ? gameWin() : setForNextRow();
 };
 
 function renderFeedback() {
-    console.log(feedbackArray);
-    console.log(compCodeArray);
     feedbackArray.forEach(function(feedback, idx){
     let feedbackLocale = document.getElementById(`Fr${gameTurn}c${idx}`)
     feedbackLocale.style.backgroundColor = `${COLORS[feedback]}`;
@@ -182,6 +191,7 @@ function renderFeedback() {
 }
 
 function setForNextRow(){
+    guesses = guesses + 1;
     countdownOutline.style.outline = "none"
     gameTurn = gameTurn - 1;
     colorArray = colorArrayReset.map(ele => ele);
@@ -200,8 +210,20 @@ function checkWin(){
 
 };
 
-function gameEnd () {
-
-
-console.log("you won!");
+function gameWin () {
+    currentScore = currentScore + 1;
+    //innerhtml = "YOU WON!";
+    render();
 };
+
+function renderScores() {
+    playGuess.innerHTML = `guesses: ${guesses}`;
+    playWin.innerHTML = `wins: ${currentScore}`;
+    playLoses.innerHTML = `loses: ${loses}`;
+};
+
+function gameLose() {
+    // compCodeReveal.style.visibility = "visible";
+    console.log("you lose");
+    console.log(gameTurn);
+}

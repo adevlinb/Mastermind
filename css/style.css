@@ -12,12 +12,6 @@ body {
 #left {
     display: flex;
     flex-direction: column;
-
-}
-
-p {
-    background-color: rgba(0, 0, 0, 0.5);
-    display: table;
 }
 
 #bigBox {
@@ -28,14 +22,39 @@ p {
 }
 
 #scoreBoardBox {
-    min-width: 100px;
-    max-width: 400px;
+    min-width: 250px;
+    max-width: 300px;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 10px;
-    margin-right: 200px;
+    margin-right: 50px;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
+    display: table;
+}
 
+#MASTERMIND {
+    margin-left: 30%;
+}
+
+#buttonBox {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.submitButton {
+    min-width: 100px;
+    min-height: 100px;
+    border-radius: 50%;
+    margin-left: 75px;
+    margin-right: 40px;
+    margin-top: 50px;
+    border: 5px solid;
+    border-style: solid;
+    border-width: 7px;
+    border-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 2px 4px rgba(46, 46, 46, 0.6);
+    background-image: url(/Users/devil1/code/mastermind/images/wood5.jpeg);
 }
 
 #gameBoardBox {
@@ -51,7 +70,6 @@ p {
     transform: rotate(0.0025turn);
     box-shadow: 3px 5px rgba(46, 46, 46, 0.6);
     height: fit-content;
-    
 }
 
 #titleBox {
@@ -94,8 +112,6 @@ p {
     color: black;
 }
 
-
-
 .codeRows {
     display: flex;
     flex-direction: row;
@@ -125,6 +141,32 @@ p {
     margin: 5px;
     background-color: white;
     box-shadow: 2px 2px rgba(46, 46, 46, 0.6);
+}
+
+.codeAttempts:hover {
+    cursor: pointer;
+}
+
+.colorChoices:hover {
+    cursor: pointer;
+}
+
+#submitCode:hover {
+    cursor: pointer;
+    background-image: none;
+    background-color: red;
+    color: yellow;
+}
+
+#resetScore:hover {
+    cursor: pointer;
+    background-image: none;
+    background-color: black;
+    color: red;
+}
+
+#resetButton:hover {
+    cursor: pointer;
 }
 
 .feedback {
@@ -246,3 +288,47 @@ p {
 #col5 {background-color: orange;}
 #col6 {background-color: purple;}
 
+
+#scoreBoardRight {
+    /* border: 1px solid black; */
+    margin-left: 75px;
+    margin-top: 20%;
+    margin-bottom: 5%;
+    min-width: 250px;
+    min-height: 375px;
+    font-family: 'Kalam', cursive;
+    background-image: url("/Users/devil1/code/mastermind/images/notepad2.png");
+    background-size: 90%;
+    background-repeat: no-repeat;
+    transform: rotate(0.02turn);
+    padding: 10px;
+}
+
+
+#SCORE {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 1px;
+}
+
+
+#guess, #wins, #loses {
+    margin: 5px;
+}
+
+#messages {
+    text-decoration: underline;
+    margin-top: 5px;
+}
+
+#messageBoard {
+    outline: 1px solid black;
+    max-width: 200px;
+    min-height: 125px;
+    border-radius: 3px;
+}
+
+#playAgain {
+    margin: 15px;
+    margin-left: 30px;
+}

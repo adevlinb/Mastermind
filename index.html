@@ -17,7 +17,7 @@
     <div id="bigBox">
         <div id="left">
             <div id=scoreBoardBox>
-                <p>MASTERMIND!</p>
+                <p id="MASTERMIND">MASTERMIND!</p>
                 <p>INSTRUCTIONS:</p>
                 <p>Your goal is to break the 4 digit code that stands between you and saving the world from nuclear disaster!
                 
@@ -30,20 +30,15 @@
                 reality!</p>
                 <p>Your Mission</p>
                 <p>color coded key</p>
-                <button id="submitButton">Submit Code!</button>
             </div>
-            <div id=scoreBoardBox>
-                <p>SCOREBOARD</p>
-                <p>guesses</p>
-                <p>wins</p>
-                <p>Your Mission</p>
-                <p>color coded key</p>
-                <button id="resetButton">PLAY AGAIN!</button>
-            </div>
+        </div>
+        <div id= buttonBox>
+            <div id="submit"><button class="submitButton" id="resetScore">RESET<br>SCORES!</button></div>
+            <div id="submit"><button class="submitButton" id="submitCode">SUBMIT<br>CODE!</button></div>
         </div>
         <div id="gameBoardBox">
             <div id=titleBox>
-                <p id="gameTitle">MASTERMIND</p>
+                <p id="gameTitle">MASTERMIND!</p>
                 <div id="compCode">
                     <div class="compCode" id="comp0">C</div>
                     <div class="compCode" id="comp1">O</div>
@@ -51,7 +46,6 @@
                     <div class="compCode" id="comp3">E</div>
                 </div>
             </div>
-
             <div id="codeRows">
                 <div class=codeRows id="row0">
                     <div class="defcon">
@@ -240,7 +234,18 @@
                 <div id="col4"></div>
                 <div id="col5"></div>
                 <div id="col6"></div>
+            </div>   
+        </div>
+        <div id=scoreBoardRight>
+            <p id="SCORE">SCOREBOARD</p>
+            <p id="guess">guesses:</p>
+            <p id="wins">wins:</p>
+            <p id="loses">loses:</p>
+            <div id="messageBoard">
+                <p id="messages">Messages:</p>
+
             </div>
+            <button id="playAgain">PLAY AGAIN!</button>
         </div>
     </div>
 </body>
