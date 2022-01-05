@@ -53,8 +53,24 @@ let playGuess = document.getElementById("guess");
 let playWin = document.getElementById("wins");
 let playLoses = document.getElementById("loses");
 let inner = document.getElementById("inner");
+let dirButton = document.getElementById("directions");
+let audioButton = document.getElementById("audio");
+let instructions = document.getElementById("instructions");
+let close = document.getElementById("instructions");
 
 /*----- event listeners -----*/
+dirButton.addEventListener("click", function(evt){
+    instructions.id = ("visible")
+});
+
+close.addEventListener("click", function() {
+    instructions.id = ("instructions");
+})
+
+audioButton.addEventListener("click", function(evt){
+
+});
+
 colorChoices.addEventListener("click", function(evt){
     colorID = evt.target.id[3];
     if (colorID === "" || colorID === NaN || colorID === undefined) return;
