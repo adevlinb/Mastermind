@@ -11,6 +11,18 @@ let COLORS = {
     "Feed2": "grey"
 }
 
+let MESSAGES = {
+    10: "Do you want to play a game?",
+    9: "How quickly can you guess the code?",
+    8: "It's getting hot in here, take off all your codes!",
+    7: "We're running out of time!.. not really",
+    6: "almost half-way there! Better get it together!",
+    5: "Are we going to be here all night?",
+    4: "I thought you were better than this",
+    3: "OMG... get with the PROGRAM",
+    2: "Maybe we should play a different game?",
+    1: "We're DOOMED!"
+}
 
 
 /*----- app's state (variables) -----*/
@@ -40,8 +52,14 @@ let resetScores = document.getElementById("resetScore");
 let playGuess = document.getElementById("guess");
 let playWin = document.getElementById("wins");
 let playLoses = document.getElementById("loses");
+let inner = document.getElementById("inner");
 
 /*----- event listeners -----*/
+colorChoices.addEventListener("click", function(evt){
+    colorID = evt.target.id[3];
+    if (colorID === "" || colorID === NaN || colorID === undefined) return;
+});
+
 codeRows.addEventListener("click", function(evt){
     let buttonID = evt.target.id
     if (colorID === "" || colorID === NaN || colorID === undefined) return;
@@ -54,10 +72,6 @@ submitButton.addEventListener("click", function(evt){
     submitColorCheck();
 });
 
-colorChoices.addEventListener("click", function(evt){
-    colorID = evt.target.id[3];
-    if (colorID === "" || colorID === NaN || colorID === undefined) return;
-});
 
 resetScores.addEventListener("click", function() {
     currentScore = 0;
@@ -71,7 +85,7 @@ playAgain.addEventListener("click", function(){
     for (let j = 0; j < 10; j++) {
         for (let m = 0; m < 4; m++) {
             //iterate through board to reset playerCodeColors to "white / empty"
-        let codeLocale = document.getElementById(`r${j}c${m}`);
+        let codeLocale = document.getElementById(`c${m}r${j}`);
         codeLocale.style.backgroundColor = `${COLORS[0]}`;
             //iterate through feedbackColorBoards to reset colors to "white / empty"
         let feedbackLocale = document.getElementById(`Fr${j}c${m}`)
@@ -113,6 +127,7 @@ function render () {
     countdownOutline.style.outline = "2.5px solid rgba(255, 0, 0, 0.9)"
     compCodeReveal.style.visibility = winner ? "visible" : "hidden";
     playAgain.style.visibility = winner ? "visible" : "hidden";
+    inner.innerHTML = winner ?  "YOU SAVED US!!" : `${MESSAGES[gameTurn]}`
     renderScores();
     renderPlayerBoard();
     renderFeedback();
@@ -187,11 +202,10 @@ function setForNextRow(){
     guesses = guesses + 1;
     countdownOutline.style.outline = "none"
     gameTurn = gameTurn - 1;
-    gameTurn === 0 ? gameLose() : 
     colorArray = colorArrayReset.slice();
     compCopyCode = compCodeArray.slice();
     feedbackArray = [];
-    render();
+    gameTurn === 0 ? gameLose() : render();
 }
 
 function checkWin(){
@@ -206,7 +220,6 @@ function checkWin(){
 
 function gameWin () {
     currentScore = currentScore + 1;
-    //innerhtml = "YOU WON!";
     render();
 };
 
@@ -218,5 +231,6 @@ function renderScores() {
 
 function gameLose() {
     compCodeReveal.style.visibility = "visible";
+    inner.innerHTML = "YOU LOSER!!";
     return;
 }
