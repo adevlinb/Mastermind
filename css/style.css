@@ -296,7 +296,7 @@ body {
     min-width: 250px;
     min-height: 375px;
     font-family: 'Kalam', cursive;
-    background-image: url(https://github.com/adevlinb/Mastermind/blob/main/images/notepad2.png);
+    background-image: url(../images/notepad2.png);
     background-size: 90%;
     background-repeat: no-repeat;
     transform: rotate(0.02turn);
