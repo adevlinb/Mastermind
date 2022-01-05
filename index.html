@@ -13,24 +13,31 @@
 </head>
 
 <body>
-    <h1></h1>
     <div id="bigBox">
         <div id="left">
             <div id=scoreBoardBox>
                 <p id="MASTERMIND">MASTERMIND!</p>
-                <p>INSTRUCTIONS:</p>
-                <p>Your goal is to break the 4 digit code that stands between you and saving the world from nuclear disaster!
-                
-                Click inside the empty circle to cycle through the 6 possible colors and leave a color in each circle. Once you have
-                chosen your four colors you may click the “crack the code” button to submit your guess. On the right hand side of the
-                board your nemesis will respond with filling the circles according to two distinctions. Grey if you got one of your
-                colors correct. (One peg per correct color even if the code contains the color twice). Black is returned if you got a
-                color correct and the position correct. From there, take your next educated guess and submit another guess. The game
-                will continue accordingly until you crack the code / save the world or face nuclear holocaust! Don’t let fate become a
-                reality!</p>
-                <p>Your Mission</p>
-                <p>color coded key</p>
+                <p id="mission">YOUR MISSION</p>
+                <p id="statement">Your goal is to break the 4 digit code that stands between you and saving the world from nuclear disaster! 
+                    (not really.. just pretend and have fun!)</p>
             </div>
+            <div id="scoreBoardBox">
+                <p id="directions">DIRECTIONS</p>
+                <p id="instructions">
+                1. Select the color at the bottom of the board that you wish to use in your code. <br><br>
+                2. Then click inside the code circle you wish to place your color. <br><br>
+                3. After you've selected 4 colors for that row you can submit the code for testing with the button on the left. <br><br>
+                4. Feeback information from the computer will display to the right on the same row. <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;-- Black for each correct color / location. <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;-- Grey for correct color, not location. <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;-- (One grey peg per color even if code <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contains the color twice)<br><br>
+                
+                5. From there, take your next educated guess and submit! The game will continue accordingly
+                until you crack the code / save the world or face nuclear holocaust! 
+                Don’t let fate become a reality!</p>
+            </div>
+            <div id="scoreBoardBox">AUDIO</div>
         </div>
         <div id= buttonBox>
             <div id="submit"><button class="submitButton" id="resetScore">RESET<br>SCORES!</button></div>
