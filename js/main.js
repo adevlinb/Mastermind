@@ -54,9 +54,10 @@ let playWin = document.getElementById("wins");
 let playLoses = document.getElementById("loses");
 let inner = document.getElementById("inner");
 let dirButton = document.getElementById("directions");
-let audioButton = document.getElementById("audio");
 let instructions = document.getElementById("instructions");
 let close = document.getElementById("instructions");
+const audioWin = document.getElementById("win");
+const audioLose = document.getElementById("lose");
 
 /*----- event listeners -----*/
 dirButton.addEventListener("click", function(evt){
@@ -66,10 +67,6 @@ dirButton.addEventListener("click", function(evt){
 close.addEventListener("click", function() {
     instructions.id = ("instructions");
 })
-
-audioButton.addEventListener("click", function(evt){
-
-});
 
 colorChoices.addEventListener("click", function(evt){
     colorID = evt.target.id[3];
@@ -238,6 +235,7 @@ function checkWin(){
 
 function gameWin () {
     currentScore = currentScore + 1;
+    audioWin.play();
     render();
 };
 
@@ -249,7 +247,7 @@ function renderScores() {
 
 function gameLose() {
     compCodeReveal.style.visibility = "visible";
-
+    audioLose.play();
     inner.innerHTML = "YOU LOSER!!";
     return;
 }
