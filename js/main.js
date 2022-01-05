@@ -124,7 +124,7 @@ function generateCompCode() {
 
 function render () {
     countdownOutline = document.getElementById(`defcon${gameTurn}`);
-    countdownOutline.style.outline = "2.5px solid rgba(255, 0, 0, 0.9)"
+    countdownOutline.style.outline = gameTurn ? "2.5px solid rgba(255, 0, 0, 0.9)" : "none";
     compCodeReveal.style.visibility = winner ? "visible" : "hidden";
     playAgain.style.visibility = winner ? "visible" : "hidden";
     inner.innerHTML = winner ?  "YOU SAVED US!!" : `${MESSAGES[gameTurn]}`
@@ -215,7 +215,6 @@ function checkWin(){
        if (feedback === "Feed1") count++;
     });
     return count === 4 ? true : null;
-
 };
 
 function gameWin () {
@@ -231,6 +230,7 @@ function renderScores() {
 
 function gameLose() {
     compCodeReveal.style.visibility = "visible";
+
     inner.innerHTML = "YOU LOSER!!";
     return;
 }
