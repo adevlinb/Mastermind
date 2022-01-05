@@ -81,11 +81,13 @@ resetScores.addEventListener("click", function() {
 });
 
 playAgain.addEventListener("click", function(){
+    console.log("play again");
     buttonID = 0;
-    for (let j = 0; j < 10; j++) {
+    for (let j = 1; j < 11; j++) {
         for (let m = 0; m < 4; m++) {
             //iterate through board to reset playerCodeColors to "white / empty"
         let codeLocale = document.getElementById(`c${m}r${j}`);
+        console.log(codeLocale);
         codeLocale.style.backgroundColor = `${COLORS[0]}`;
             //iterate through feedbackColorBoards to reset colors to "white / empty"
         let feedbackLocale = document.getElementById(`Fr${j}c${m}`)
@@ -111,6 +113,7 @@ function init(){
     winner = null;
     generateCompCode();
     compCopyCode = compCodeArray.slice();
+    console.log(compCopyCode);
     render();
 }
 
