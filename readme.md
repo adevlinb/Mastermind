@@ -9,7 +9,7 @@
 **HTML**, **CSS**, **JAVASCRIPT**, and **AFFINITY DESIGNER** were all used to create this computer based version of the game where color represents the code, just like the board game. While HTML, CSS, and Javascript were the core technologies to make it possible to access user input, respond accordingly, and have elements displayed on the web page, I brought in affinity designer to manipulate some of the background images to get the textures I was looking for. 
 
 ## [MASTERMIND](linb.github.io/Mastermind/) Game Play:
-<img style="float: right" src="https://i.imgur.com/ligXgBz.png" height=400px;/> 
+<img style="float: left" src="https://i.imgur.com/ligXgBz.png" height=400px;/> 
 
 1. Choose 4 digit color code to be guessed
 2. Submit Guess
@@ -24,7 +24,7 @@
 ### ICEBOX:
 
 Down the road I would consider other fesature sets that would be a nice addition:
-1. Difficulty Level Choic
+1. Difficulty Level Choice
     - change in number of guesses
     - change in number of codes beyond 4
 2. Multi-Player
